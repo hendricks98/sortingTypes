@@ -17,4 +17,4 @@ List of sorting algorithm types found inside the repo, will be updated as more t
   	* Basic sort, iterate through the entire array finding the minimum, swapping with the first element if found
   	* Diplays an array with 100 integers ranging from 1-100
   	* Prints a sorted array, using a selection sort
-  	* Diplays analytics on the sort time
+  	* Displays analytics on the sort time

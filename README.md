@@ -5,6 +5,9 @@ This repository is a collection of different sort algorithms. This project is pu
 
 # Sort Algorithm List
 List of sorting algorithm types found inside the repo, will be updated as more types are created
+  * Notes:
+    * Each sort class extends a parent 'sortTools' class, a class that shares primary tools used in all classes
+
   * [COMPLETE]: Bubble sort 
     * Basic sort, each element is compared to its neighbor and swapped if it is larger
     * Displays an array with 100 integers ranging from 1-100

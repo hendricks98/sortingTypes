@@ -1,30 +1,25 @@
 import java.lang.Math;
 import java.text.DecimalFormat;
 
-public class bubbleSort {
-	
+public class selectionSort {
 
 	static long totalCount;
-	static String fullPrint;
 
 	static double start;
 	static double finish;
 
 	public static void main(String[] args) {
-
-
+		
 		System.out.println("Generating unsorted array: ");
 
 		int[] testNums = fillArray();
 		printArray(testNums);
 		System.out.println("");
 
-		System.out.println("Running bubbleSort algorithm: ");
+		System.out.println("Running selectionSort algorithm: ");
 
 		start = System.nanoTime() / 1000000000.0;
-
-		printArray(bubbleSort(testNums));
-
+		printArray(selectionSort(testNums));
 		finish = System.nanoTime() / 1000000000.0;
 		double totalTime = (finish - start);
 
@@ -40,8 +35,6 @@ public class bubbleSort {
 		System.out.println("Number of swaps: " + totalCount);
 		System.out.println("Approximate processing time: " + time + " seconds");
 		System.out.println("Swaps per second: " + swapRatio );
-
-
 	}
 
 	/***********************************************
@@ -51,16 +44,14 @@ public class bubbleSort {
 	***********************************************/
 
 	public static void printArray(int[] list) {
-		
-		System.out.print("\nSORTED ARRAY: ");
 
-		// cycle through each element of array
 		for (int i = 0; i < list.length; i++) {
+
 			System.out.print(list[i] + " ");
+
 		}
 
 		System.out.println("");
-	
 	}
 
 	/***********************************************
@@ -70,59 +61,61 @@ public class bubbleSort {
 		Parameters: None
 	***********************************************/
 
-
 	public static int[] fillArray() {
 
 		int[] numbers;
-		numbers = new int[10];
+		numbers = new int[100];
 
-		// fill array with random numbers
+		// fill array with random numbers between 1-1000
 		for (int i = 0; i < numbers.length; i++){
 
-			numbers[i] = (int) (Math.random() * 10 ) + 1;
+			numbers[i] = (int) (Math.random() * 100 ) + 1;
 		}
 
 		return numbers;
-
 	}
 
 	/***********************************************
-	METHOD: bubbleSort(int[])
-		Use: Bubble sort algorithm, sorts an array 
-			of integers, swapping smaller numbers
-			one by one as it iterates thru array
+	METHOD: selectionSort(int[])
+		Use: Selection sort algorithm, sorts an array 
+			of integers, swapping the smalles number
+			in the array with the first element, one
+			swap each iteration
 		Parameters: Array with random integers
 	***********************************************/
 
-	public static int[] bubbleSort(int[] numbers) {
+	public static int[] selectionSort(int[] numbers) {
 
-		boolean sorted = false;
-		int swapCount = 0;
+		int minimum;
+		int minIndex = 0;
+		boolean minFound = false;
 
-		while (!sorted) {
-			swapCount = 0;
-			for (int i = 0; i < numbers.length - 1; i++){
-				// swap if smaller number is found
-				if (numbers[i] > numbers[i+1]) {
-					int swap = numbers[i+1];
-					numbers[i+1] = numbers[i];
-					numbers[i] = swap;
+		// iterate through array
+		for (int i = 0; i < numbers.length; i++){
+			minimum = numbers[i];
 
-
-					swapCount++;
-					totalCount++;
+			// starting on i, iterate through array
+			// and swap if necessary
+			for (int h = i; h < numbers.length; h++){
+				if (numbers[h] < minimum){
+					minFound = true;	
+					minIndex = h;
+					minimum = numbers[h];
 				}
 			}
 
-			// if no swaps are conducted, exit the loop
-			if (swapCount == 0) {
-				sorted = true;
+			// swap minimum with i element, if new
+			// minimum is found
+			if (minFound){
+				int temp;
+				temp = numbers[i];
+				numbers[i] = minimum;
+				numbers[minIndex] = temp;
+				totalCount++;
 			}
-
 		}
 
 		return numbers;
-
 	}
 
 }

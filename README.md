@@ -7,6 +7,11 @@ This repository is a collection of different sort algorithms. This project is pu
 List of sorting algorithm types found inside the repo, will be updated as more types are created
   * [COMPLETE]: Bubble sort 
     * Basic sort, each element is compared to its neighbor and swapped if it is larger
-    * Displays an array with 100 integers ranging from 1-1000
+    * Displays an array with 100 integers ranging from 1-100
     * Prints a sorted array, using a bubble sort
-    * Displays analystics on the sort time
+    * Displays analytics on the sort time
+  * [COMPLETE]: Selection sort
+  	* Basic sort, iterate through the entire array finding the minimum, swapping with the first element if found
+  	* Diplays an array with 100 integers ranging from 1-100
+  	* Prints a sorted array, using a selection sort
+  	* Diplays analytics on the sort time

@@ -1,20 +1,20 @@
 # sortingTypes
 
-
-This repository is a collection of different sort algorithms. This project is purely for educational purposes as a tool to learn, not intended for actual use. 
+This project is purely for educational purposes as a tool to learn, not intended for actual use.
+This repo contains a project intended to test the speed of different sorting algorithms by sorting an array of n numbers. 
 
 # Sort Algorithm List
 List of sorting algorithm types found inside the repo, will be updated as more types are created
-  * Notes:
-    * Each sort class extends a parent 'sortTools' class, a class that shares primary tools used in all classes
+- Bubble Sort
+- Selection Sort
 
-  * [COMPLETE]: Bubble sort 
-    * Basic sort, each element is compared to its neighbor and swapped if it is larger
-    * Displays an array with 100 integers ranging from 1-100
-    * Prints a sorted array, using a bubble sort
-    * Displays analytics on the sort time
-  * [COMPLETE]: Selection sort
-  	* Basic sort, iterate through the entire array finding the minimum, swapping with the first element if found
-  	* Diplays an array with 100 integers ranging from 1-100
-  	* Prints a sorted array, using a selection sort
-  	* Displays analytics on the sort time
+
+  # Notes:
+ - Each sort class extends a parent 'SortTools' class, a class that shares primary tools used in all classes.
+ - The sorts are run from a file 'sortTest' which prints out time stats on each sort algorithm
+ - 
+ # Upcoming Features:
+- Raw data file output
+- Additional sort algorithms
+- Scalable testing (e.g. 100 vs 1000 vs 10000 nuumbers)
+

@@ -1,30 +1,29 @@
-import java.lang.Math;
 import java.text.DecimalFormat;
 
-public class bubbleSort extends sortTools {
+public class BubbleSort extends SortTools {
 	
-	static long totalCount;
+	private static long totalCount;
 
-	public static void main(String[] args) {
+	public static void sort(int[] testSet){
 
-		int[] testSet = preRun();
-		printArray(bubbleSort(testSet));
-		postRun();
+		SortTools bubbleKit = new SortTools();
+		
+		totalCount = 0;
+		double bubbleStart = bubbleKit.startTime();
+		bubbleSort(testSet);
+		double bubbleStop = bubbleKit.stopTime();
 
-		// sort specific stats
-		double swapRatio = Double.parseDouble(twoDec.format(totalCount / time));
-		System.out.println("Number of numbers: " + testSet.length);
-		System.out.println("Number of swaps: " + totalCount);
-		System.out.println("Swaps per second: " + swapRatio );
+		bubbleKit.postRun(bubbleStart, bubbleStop, testSet, totalCount);
 
 	}
 
 	/***********************************************
-	METHOD: bubbleSort(int[])
+	METHOD: bubbleSort(int[] numbers)
 		Use: Bubble sort algorithm, sorts an array 
 			of integers, swapping smaller numbers
 			one by one as it iterates thru array
-		Parameters: Array with random integers
+		Parameters: 
+			numbers: array with random integers
 	***********************************************/
 
 	public static int[] bubbleSort(int[] numbers) {
@@ -35,6 +34,7 @@ public class bubbleSort extends sortTools {
 		while (!sorted) {
 			swapCount = 0;
 			for (int i = 0; i < numbers.length - 1; i++){
+
 				// swap if smaller number is found
 				if (numbers[i] > numbers[i+1]) {
 					int swap = numbers[i+1];

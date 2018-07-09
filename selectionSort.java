@@ -1,31 +1,31 @@
-import java.lang.Math;
 import java.text.DecimalFormat;
 
-public class selectionSort extends sortTools {
+public class SelectionSort extends SortTools {
 
-	static long totalCount;
+	private static long totalCount;
 
-	public static void main(String[] args) {
+	public static void sort(int[] testSet) {
 
-		int[] testSet = preRun();
-		printArray(selectionSort(testSet));
-		postRun();
+		SortTools selectionKit = new SortTools();
 
-		// sort specific stats
-		double swapRatio = Double.parseDouble(twoDec.format(totalCount / time));
-		System.out.println("Number of numbers: " + testSet.length);
-		System.out.println("Number of swaps: " + totalCount);
-		System.out.println("Swaps per second: " + swapRatio );
-		
+		totalCount = 0;
+		double go = selectionKit.startTime();
+		selectionSort(testSet);
+		double stop = selectionKit.stopTime();
+
+		selectionKit.postRun(go, stop, testSet, totalCount);
+
+
 	}
 
 	/***********************************************
-	METHOD: selectionSort(int[])
+	METHOD: selectionSort(int[] numbers)
 		Use: Selection sort algorithm, sorts an array 
 			of integers, swapping the smalles number
 			in the array with the first element, one
 			swap each iteration
-		Parameters: Array with random integers
+		Parameters: 
+			numbers: array with random integers
 	***********************************************/
 
 	public static int[] selectionSort(int[] numbers) {

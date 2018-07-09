@@ -1,41 +1,44 @@
 import java.lang.Math;
 import java.text.DecimalFormat;
+import java.io.File;
+import java.io.PrintWriter;
 
-public class sortTools {
+public class SortTools {
+
 	public static double start;
 	public static double finish;
-	public static double time;
+	public static double timeFormat;
 	public static DecimalFormat twoDec;
-	public static DecimalFormat fourDec;
+	public static DecimalFormat scientific;
 
 	/***********************************************
-	METHOD: printArray(int[])
+	METHOD: printArray(int[] list)
 		Use: Prints each element of an integer array
-		Parameters: Takes in integer array
+		Parameters: 
+			list: Takes in integer array
 	***********************************************/
 
 	public static void printArray(int[] list) {
 
 		for (int i = 0; i < list.length; i++) {
-
 			System.out.print(list[i] + " ");
-
 		}
 
 		System.out.println("");
 	}
 
 	/***********************************************
-	METHOD: fillArray()
+	METHOD: fillArray(int n)
 		Use: Creates a sample test array and fills
 			with random numbers, in a random order
-		Parameters: None
+		Parameters: 
+			n: # of numbers to fill the array with
 	***********************************************/
 
-	public static int[] fillArray() {
+	public static int[] fillArray(int n) {
 
 		int[] numbers;
-		numbers = new int[100];
+		numbers = new int[n];
 
 		// fill array with random numbers between 1-1000
 		for (int i = 0; i < numbers.length; i++){
@@ -46,34 +49,78 @@ public class sortTools {
 		return numbers;
 	}
 
-	public static int[] preRun() {
+	/***********************************************
+	METHOD: preRun(int n)
+		Use: Calls fillArray() and alerts the user
+			before running sorts
+		Parameters: n numbers to fill the array with
+	***********************************************/
 
-		System.out.println("Generating unsorted array: ");
 
-		int[] testNums = fillArray();
-		printArray(testNums);
+	public static int[] preRun(int n) {
+
+		System.out.println("Generating an unsorted array...");
+
+		int[] testNums = fillArray(n);
 		System.out.println("");
 
-		System.out.println("Running sort algorithm: ");
-		start = System.nanoTime() / 1000000000.0;
+		System.out.println("Running sort algorithms...\n");
 
 		return testNums;
 	}
 
-	public static void postRun() {
-		finish = System.nanoTime() / 1000000000.0;
+	/***********************************************
+	METHOD: postRun(double start, finish, totalCount
+		int[] testSet)
+		Use: After running sorts, print out analytics
+			of each sort including total time, sample
+			size, number of swaps, and swaps/second
+		Parameters: 
+			start: start time of sort
+			finish: finish time of sort
+			testSet: array of unsorted numbers
+			totalCount: total count of swaps made by
+				the sort algorithm
+	***********************************************/	
+
+	public static void postRun(double start, double finish, int[] testSet, double totalCount) {
 
 		double totalTime = (finish - start);
 
-		System.out.println("");
+		scientific = new DecimalFormat("0.00E00");
+		twoDec = new DecimalFormat("#.00");
+		timeFormat = Double.parseDouble(scientific.format(totalTime));
 
-		fourDec = new DecimalFormat(".0000");
-		twoDec = new DecimalFormat(".00");
-		time = Double.parseDouble(fourDec.format(totalTime));
-
-		System.out.println("Analytics: ");
-		System.out.println("Approximate processing time: " + time + " seconds");
-
+		System.out.println("Approximate processing time: " + timeFormat + " seconds");
+		double swapRatio = Double.parseDouble(twoDec.format(totalCount / totalTime ));
+		System.out.println("Number of numbers: " + testSet.length);
+		System.out.println("Number of swaps: " + scientific.format(totalCount));
+		System.out.print("Swaps per second: " + scientific.format(swapRatio));
 	}
+
+	/***********************************************
+	METHOD: startTime()
+		Use: Capture the current start time
+		Parameters: None
+	***********************************************/	
+
+	public static double startTime(){
+		double start = System.nanoTime() / 1000000000.0;
+
+		return start;
+	}
+
+	/***********************************************
+	METHOD: stopTime()
+		Use: Capture the current stop time
+		Parameters: None
+	***********************************************/
+
+	public static double stopTime(){
+		double finish = System.nanoTime() / 1000000000.0;
+
+		return finish;
+	}
+
 
 }

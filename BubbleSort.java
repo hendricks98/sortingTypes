@@ -1,13 +1,14 @@
 import java.text.DecimalFormat;
+import java.io.IOException;
 
 public class BubbleSort extends SortTools {
-	
+
 	private static long totalCount;
 
 	public static void sort(int[] testSet){
 
 		SortTools bubbleKit = new SortTools();
-		
+
 		totalCount = 0;
 		double bubbleStart = bubbleKit.startTime();
 		bubbleSort(testSet);
@@ -15,14 +16,20 @@ public class BubbleSort extends SortTools {
 
 		bubbleKit.postRun(bubbleStart, bubbleStop, testSet, totalCount);
 
+		try{
+			bubbleKit.postRunOut(bubbleStart, bubbleStop, testSet, totalCount);
+		} catch (IOException e){
+			System.out.println("IOException!");
+		}
+
 	}
 
 	/***********************************************
 	METHOD: bubbleSort(int[] numbers)
-		Use: Bubble sort algorithm, sorts an array 
+		Use: Bubble sort algorithm, sorts an array
 			of integers, swapping smaller numbers
 			one by one as it iterates thru array
-		Parameters: 
+		Parameters:
 			numbers: array with random integers
 	***********************************************/
 
@@ -40,8 +47,6 @@ public class BubbleSort extends SortTools {
 					int swap = numbers[i+1];
 					numbers[i+1] = numbers[i];
 					numbers[i] = swap;
-
-
 					swapCount++;
 					totalCount++;
 				}

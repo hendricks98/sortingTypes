@@ -1,4 +1,5 @@
 import java.text.DecimalFormat;
+import java.io.IOException;
 
 public class SelectionSort extends SortTools {
 
@@ -15,16 +16,21 @@ public class SelectionSort extends SortTools {
 
 		selectionKit.postRun(go, stop, testSet, totalCount);
 
+		try {
+			selectionKit.postRunOut(go, stop, testSet, totalCount);
+		} catch (IOException e) {
+			System.out.println("IOException!");
+		}
 
 	}
 
 	/***********************************************
 	METHOD: selectionSort(int[] numbers)
-		Use: Selection sort algorithm, sorts an array 
+		Use: Selection sort algorithm, sorts an array
 			of integers, swapping the smalles number
 			in the array with the first element, one
 			swap each iteration
-		Parameters: 
+		Parameters:
 			numbers: array with random integers
 	***********************************************/
 
@@ -42,7 +48,7 @@ public class SelectionSort extends SortTools {
 			// and swap if necessary
 			for (int h = i; h < numbers.length; h++){
 				if (numbers[h] < minimum){
-					minFound = true;	
+					minFound = true;
 					minIndex = h;
 					minimum = numbers[h];
 				}

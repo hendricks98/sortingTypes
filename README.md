@@ -15,7 +15,7 @@ List of sorting algorithm types found inside the repo, will be updated as more t
  - Each sort class extends a parent 'SortTools' class, a class that shares primary tools used in all classes.
  - The sorts are run from a file 'sortTest' which prints out time stats on each sort algorithm
 
-# Version 1.0 07/08/18
+# Version 1.0 - 07/08/18
  - Sorts random integer arrays using bubble-sort and selection-sortTest
  - User defined sample sample size
  - Outputs time stats to the command command line

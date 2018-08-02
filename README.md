@@ -3,10 +3,15 @@
 This project is purely for educational purposes as a tool to learn, not intended for actual use.
 This repo contains a project intended to test the speed of different sorting algorithms by sorting an array of n numbers.
 
+# Output:
+
+### running the program will print the following to command line
 ![Command Line](/screenshots/screenshot1.png)
+
+### the following will be created in an output file in the directory
 ![Output File](screenshots/screenshot2.png)
 
-# Sort Algorithm List
+# Sort Algorithm List:
 List of sorting algorithm types found inside the repo, will be updated as more types are created
 - Bubble Sort
 - Selection Sort

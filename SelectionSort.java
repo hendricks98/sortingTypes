@@ -5,19 +5,17 @@ public class SelectionSort extends SortTools {
 
 	private static long totalCount;
 
-	public static void sort(int[] testSet) {
-
-		SortTools selectionKit = new SortTools();
+	public static void sort(int[] unsortedNumbers) {
 
 		totalCount = 0;
-		double go = selectionKit.startTime();
-		selectionSort(testSet);
-		double stop = selectionKit.stopTime();
+		double go = startTime();
+		selectionSort(unsortedNumbers);
+		double stop = stopTime();
 
-		selectionKit.postRun(go, stop, testSet, totalCount);
+		printMetrics(go, stop, unsortedNumbers, totalCount);
 
 		try {
-			selectionKit.postRunOut(go, stop, testSet, totalCount);
+			printMetricsOut(go, stop, unsortedNumbers, totalCount);
 		} catch (IOException e) {
 			System.out.println("IOException!");
 		}

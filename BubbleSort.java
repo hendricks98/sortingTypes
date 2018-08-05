@@ -5,19 +5,16 @@ public class BubbleSort extends SortTools {
 
 	private static long totalCount;
 
-	public static void sort(int[] testSet){
-
-		SortTools bubbleKit = new SortTools();
+	public static void sort(int[] unsortedNumbers){
 
 		totalCount = 0;
-		double bubbleStart = bubbleKit.startTime();
-		bubbleSort(testSet);
-		double bubbleStop = bubbleKit.stopTime();
+		double bubbleStart = startTime();
+		bubbleSort(unsortedNumbers);
+		double bubbleStop = stopTime();
 
-		bubbleKit.postRun(bubbleStart, bubbleStop, testSet, totalCount);
-
+		printMetrics(bubbleStart, bubbleStop, unsortedNumbers, totalCount);
 		try{
-			bubbleKit.postRunOut(bubbleStart, bubbleStop, testSet, totalCount);
+			printMetricsOut(bubbleStart, bubbleStop, unsortedNumbers, totalCount);
 		} catch (IOException e){
 			System.out.println("IOException!");
 		}

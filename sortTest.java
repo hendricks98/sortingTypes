@@ -3,9 +3,12 @@ import java.io.File;
 import java.io.PrintWriter;
 import java.io.IOException;
 
+// sortTest class is a class used to run tests on different sorting algorithms
+// and return metrics on said algorithms
+
 public class sortTest extends SortTools {
 
-	static int[] testSet;
+	static int[] unsortedNumbers;
 
 	//objects used to sort with corresponding algorithms
 	static BubbleSort bubble = new BubbleSort();
@@ -14,7 +17,7 @@ public class sortTest extends SortTools {
 	public static void main(String[] args) throws IOException {
 
 		System.out.println("\n");
-		System.out.println("Enter size of test sample: ");
+		System.out.println("Enter size of array to be sorted: ");
 
 		// Scanner object to retrieve how many numbers the user wants to sort
 		Scanner keyIn = new Scanner(System.in);
@@ -22,12 +25,12 @@ public class sortTest extends SortTools {
 
 		// Init objects that will be used throughout the program
 		SortTools toolkit = new SortTools();
-		rawOut = new File("rawOutput.txt");
+		rawOut = new File("output.txt");
 		printer = new PrintWriter(rawOut);
 
 		// generate an array to be sorted by
 		// each sorting algorithm
-		int[] testSet = toolkit.preRun(sampleSize);
+		int[] unsortedNumbers = toolkit.preRun(sampleSize);
 		int[] bubbleSet = new int[sampleSize];
 		int[] selectionSet = new int[sampleSize];
 
@@ -36,14 +39,12 @@ public class sortTest extends SortTools {
 		// unsorted array
 		for (int i = 0; i < sampleSize; i++){
 
-			bubbleSet[i] = testSet[i];
-			selectionSet[i] = testSet[i];
+			bubbleSet[i] = unsortedNumbers[i];
+			selectionSet[i] = unsortedNumbers[i];
 
 		}
 
-		// Sort and print stats to cmd-line as well as output file
-			// note: sorted is defined here but can be defined as any of the
-			// 			 sorts, it is used to print out a sorted array later below
+		// Sort and print stats to STDOUT as well as output file
 		printer.println("(BUBBLE SORT STATS)");
 		int[] sorted = bubble(bubbleSet);
 
@@ -52,7 +53,7 @@ public class sortTest extends SortTools {
 		System.out.print("\n");
 		System.out.print("\n");
 
-		// Sort and print stats to cmd-line as well as output file
+		// Sort and print stats to STDOUT as well as output file
 		printer.println("(SELECTION SORT STATS)");
 		selection(selectionSet);
 
@@ -60,8 +61,8 @@ public class sortTest extends SortTools {
 
 		// print unsorted and sorted array to raw output File
 		printer.println("UNSORTED ARRAY:\n");
-		for (int i = 0; i < testSet.length; i++) {
-			printer.print(testSet[i] + " ");
+		for (int i = 0; i < unsortedNumbers.length; i++) {
+			printer.print(unsortedNumbers[i] + " ");
 		}
 		printer.print("\n\n");
 		toolkit.printArrayOut(sorted);

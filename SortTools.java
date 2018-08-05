@@ -51,14 +51,14 @@ public class SortTools {
 	}
 
 	/***********************************************
-	METHOD: fillArray(int n)
-		Use: Creates a sample test array and fills
-			with random numbers, in a random order
+	METHOD: newNumbersArray(int n)
+		Use: Creates and returns an array of random
+			numbers of n length
 		Parameters:
 			n: # of numbers to fill the array with
 	***********************************************/
 
-	public static int[] fillArray(int n) {
+	public static int[] newNumbersArray(int n) {
 
 		int[] numbers;
 		numbers = new int[n];
@@ -74,8 +74,8 @@ public class SortTools {
 
 	/***********************************************
 	METHOD: preRun(int n)
-		Use: Calls fillArray() and alerts the user
-			before running sorts
+		Use: creates a new array with random numbers
+			and notifies the user the sort is beginning
 		Parameters: n numbers to fill the array with
 	***********************************************/
 
@@ -84,7 +84,7 @@ public class SortTools {
 
 		System.out.println("Generating an unsorted array...");
 
-		int[] testNums = fillArray(n);
+		int[] testNums = newNumbersArray(n);
 		System.out.println("");
 
 		System.out.println("Running sort algorithms...\n");
@@ -93,9 +93,9 @@ public class SortTools {
 	}
 
 	/***********************************************
-	METHOD: postRun(double start, finish, totalCount
+	METHOD: printMetrics(double start, finish, totalCount
 		int[] testSet)
-		Use: After running sorts, print out analytics
+		Use: After running sorts, print out metrics
 			of each sort including total time, sample
 			size, number of swaps, and swaps/second
 		Parameters:
@@ -106,7 +106,7 @@ public class SortTools {
 				the sort algorithm
 	***********************************************/
 
-	public static void postRun(double start, double finish, int[] testSet, double totalCount) {
+	public static void printMetrics(double start, double finish, int[] testSet, double totalCount) {
 		double totalTime = (finish - start);
 
 		scientific = new DecimalFormat("0.00E00");
@@ -121,9 +121,9 @@ public class SortTools {
 	}
 
 	/***********************************************
-	METHOD: postRunOut(double start, finish,
+	METHOD: printMetricsOut(double start, finish,
 		totalCount, int[] testSet)
-		Use: After running sorts, print out analytics
+		Use: After running sorts, print out metrics
 			of each sort including total time, sample
 			size, number of swaps, and swaps/second
 			to an output file instead of cmd-line
@@ -135,7 +135,7 @@ public class SortTools {
 				the sort algorithm
 	***********************************************/
 
-	public static void postRunOut(double start, double finish, int[] testSet, double totalCount) throws IOException {
+	public static void printMetricsOut(double start, double finish, int[] testSet, double totalCount) throws IOException {
 		double totalTime = (finish - start);
 
 		scientific = new DecimalFormat("0.00E00");
